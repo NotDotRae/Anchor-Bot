@@ -76,10 +76,10 @@ public class HelpNew extends ListenerAdapter {
 
     private static EmbedBuilder stickyHelp(String prefix) {
         return baseEmbed("**-AnchorBot Commands-**", prefix)
-                .addField("Sticky Commands:", "``" + prefix + "stick <message>`` - Sticks message to the channel.\n" +
-                        "``" + prefix + "stickstop`` - Cancels the stickied message.\n" +
-                        "``" + prefix + "getstickies`` - Lists all active stickies in the server.\n" +
-                        "Members need Manage Messages permission to use sticky commands.", false);
+                .addField("Pin Commands:", "``" + prefix + "stick <message>`` - Pins message to the channel.\n" +
+                        "``" + prefix + "stickstop`` - Cancels the pinned message.\n" +
+                        "``" + prefix + "getstickies`` - Lists all active pins in the server.\n" +
+                        "Members need Manage Messages permission to use pin commands.", false);
     }
 
     private static EmbedBuilder utilityHelp(String prefix) {
@@ -97,17 +97,17 @@ public class HelpNew extends ListenerAdapter {
                         "``" + prefix + "uptime`` - Shows the bot uptime.\n" +
                         "``" + prefix + "permcheck`` - Checks the bot's channel permissions.\n" +
                         "``" + prefix + "features`` - Shows included features.\n" +
-                        "``" + prefix + "disablecommands`` - Disable all non-sticky commands.\n" +
-                        "``" + prefix + "enablecommands`` - Enable all non-sticky commands.", false);
+                        "``" + prefix + "disablecommands`` - Disable all non-pin commands.\n" +
+                        "``" + prefix + "enablecommands`` - Enable all non-pin commands.", false);
     }
 
     private static EmbedBuilder featuresHelp(String prefix) {
         return baseEmbed("**-AnchorBot Feature Commands-**", prefix)
-                .addField("Feature Commands:", "``" + prefix + "stickembed <message>`` - Creates a sticky embed.\n" +
-                        "``" + prefix + "stickslow <message>`` - Creates a slower sticky.\n" +
-                        "``" + prefix + "stickwebhook <message>`` - Creates a sticky webhook message.\n" +
+                .addField("Feature Commands:", "``" + prefix + "stickembed <message>`` - Creates a pinned embed.\n" +
+                        "``" + prefix + "stickslow <message>`` - Creates a slower pin.\n" +
+                        "``" + prefix + "stickwebhook <message>`` - Creates a pinned webhook message.\n" +
                         "``" + prefix + "setwebhook <webhook url>`` - Sets the channel webhook.\n" +
-                        "``" + prefix + "webhookstop`` - Stops the webhook sticky.\n" +
+                        "``" + prefix + "webhookstop`` - Stops the webhook pin.\n" +
                         "``" + prefix + "setimage <image url>`` - Sets an embed image.\n" +
                         "``" + prefix + "removeimage`` - Removes an embed image.\n" +
                         "``" + prefix + "setbigimage <image url>`` - Sets a large embed image.\n" +
@@ -119,7 +119,7 @@ public class HelpNew extends ListenerAdapter {
 
     private static ActionRow navButtons(String selected) {
         return ActionRow.of(
-                button("sticky", "Sticky", "\uD83D\uDCCC", selected),
+                button("sticky", "Pin", "\uD83D\uDCCC", selected),
                 button("utility", "Utility", "\uD83C\uDF9B", selected),
                 button("other", "Other", "\uD83D\uDCC3", selected),
                 button("features", "Features", "\uD83E\uDDE1", selected));

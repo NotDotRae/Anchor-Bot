@@ -39,7 +39,7 @@ public class AnchorTime extends ListenerAdapter {
                     }
 
                     if(count.size() < 8) {
-                        event.getMessage().reply(event.getMember().getAsMention() + " There needs to be at least 8 messages in this channel for stickies to work!").queue();
+                        event.getMessage().reply(event.getMember().getAsMention() + " There needs to be at least 8 messages in this channel for pins to work!").queue();
 
                     } else {
 
@@ -77,7 +77,7 @@ public class AnchorTime extends ListenerAdapter {
                             removeDB(channelId);
                             addDB(channelId, arr[1].trim());
 
-                            event.getChannel().sendMessage(Main.mapMessage.get(channelId)).queue(m -> Main.mapDeleteId.put(event.getChannel().getId(), m.getId()));
+                            SilentMessages.send(event.getChannel(), Main.mapMessage.get(channelId)).queue(m -> Main.mapDeleteId.put(event.getChannel().getId(), m.getId()));
                             event.getMessage().addReaction("\u2705").queue();
                         } catch (Exception e) {
                             event.getChannel().sendMessage(event.getMember().getAsMention() + " please use this format: `?stick <message>`.").queue();
@@ -120,7 +120,7 @@ public class AnchorTime extends ListenerAdapter {
                             //if message is older then 30 sec
                             if(m.getTimeCreated().compareTo(OffsetDateTime.now().minusSeconds(15)) < 0) {
                                 m.delete().queue(null, (error) -> {});
-                                event.getChannel().sendMessage(Main.mapMessage.get(channelId)).queue(mes -> Main.mapDeleteId.put(channelId, mes.getId()));
+                                SilentMessages.send(event.getChannel(), Main.mapMessage.get(channelId)).queue(mes -> Main.mapDeleteId.put(channelId, mes.getId()));
                             }
                             break;
                         }
@@ -149,7 +149,7 @@ public class AnchorTime extends ListenerAdapter {
 
                     //If message send fails, stickstop
                     if (event.getChannel().canTalk() && !Main.mapMessage.get(channelId).isEmpty()) {
-                        event.getChannel().sendMessage(Main.mapMessage.get(channelId)).queue();
+                        SilentMessages.send(event.getChannel(), Main.mapMessage.get(channelId)).queue(mes -> Main.mapDeleteId.put(channelId, mes.getId()));
                     } else {
                         Main.mapMessage.remove(channelId);
                         removeDB(channelId);

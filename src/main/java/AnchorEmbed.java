@@ -33,7 +33,7 @@ public class AnchorEmbed extends ListenerAdapter {
             if (false) {
                 EmbedBuilder em = new EmbedBuilder();
                 em.setTitle("**Whoops! This is an AnchorBot Command!** ")
-                        .addField("__AnchorBot__ allows for sticky embeds plus other features.", "This command is available to all servers.", false);
+                        .addField("__AnchorBot__ allows for pin embeds plus other features.", "This command is available to all servers.", false);
                 event.getMessage().reply(em.setColor(Color.ORANGE).build()).queue();
             } else {
 
@@ -44,7 +44,7 @@ public class AnchorEmbed extends ListenerAdapter {
                     }
                     Main.mapImageLinkEmbed.put(channelId, args[1]);
                     addDBimage(channelId, args[1]);
-                    event.getMessage().reply(event.getMember().getAsMention() + " success! Image set for `?stickembed` stickies.").queue();
+                    event.getMessage().reply(event.getMember().getAsMention() + " success! Image set for `?stickembed` pins.").queue();
                 } else {
                     event.getMessage().reply(event.getMember().getAsMention() + " please provide an image URL.\nExample: `?setimage <image-url>`.").queue();
                 }
@@ -62,12 +62,12 @@ public class AnchorEmbed extends ListenerAdapter {
             if (false) {
                 EmbedBuilder em = new EmbedBuilder();
                 em.setTitle("**Whoops! This is an AnchorBot Command!** ")
-                        .addField("__AnchorBot__ allows for sticky embeds plus other features.", "This command is available to all servers.", false);
+                        .addField("__AnchorBot__ allows for pin embeds plus other features.", "This command is available to all servers.", false);
                 event.getMessage().reply(em.setColor(Color.ORANGE).build()).queue();
             } else {
                 removeDBimage(channelId);
                 Main.mapImageLinkEmbed.remove(channelId);
-                event.getMessage().reply(event.getMember().getAsMention() + " success! Image removed for sticky embeds in this channel.").queue();
+                event.getMessage().reply(event.getMember().getAsMention() + " success! Image removed for pin embeds in this channel.").queue();
             }
 
         } else if (args[0].equalsIgnoreCase(prefix + "removeimage") && (!permCheck(event.getMember()))) {
@@ -81,7 +81,7 @@ public class AnchorEmbed extends ListenerAdapter {
 
             if (Main.mapImageLinkEmbed.containsKey(channelId) || Main.mapBigImageLinkEmbed.containsKey(channelId)) {
                 EmbedBuilder em = new EmbedBuilder();
-                em.setTitle("Current image for sticky embeds in this channel:");
+                em.setTitle("Current image for pin embeds in this channel:");
                 if (Main.mapImageLinkEmbed.containsKey(channelId)) {
                     em.setThumbnail(Main.mapImageLinkEmbed.get(channelId));
                     em.addField("Small Image Link: ", "[here](" + Main.mapImageLinkEmbed.get(channelId) + ")", true);
@@ -95,7 +95,7 @@ public class AnchorEmbed extends ListenerAdapter {
                 event.getMessage().replyEmbeds(em.setColor(Color.ORANGE).build()).queue();
 
             } else {
-                event.getMessage().reply(event.getMember().getAsMention() + " there is no image currently set for sticky embeds in this channel.\nSet one with the `" + prefix + "setimage` command.").queue();
+                event.getMessage().reply(event.getMember().getAsMention() + " there is no image currently set for pin embeds in this channel.\nSet one with the `" + prefix + "setimage` command.").queue();
             }
 
         }
@@ -109,7 +109,7 @@ public class AnchorEmbed extends ListenerAdapter {
             if (false) {
                 EmbedBuilder em = new EmbedBuilder();
                 em.setTitle("**Whoops! This is an AnchorBot Command!** ")
-                        .addField("__AnchorBot__ allows for sticky embeds plus other features.", "This command is available to all servers.", false);
+                        .addField("__AnchorBot__ allows for pin embeds plus other features.", "This command is available to all servers.", false);
                 event.getMessage().replyEmbeds(em.setColor(Color.ORANGE).build()).queue();
             } else {
 
@@ -120,7 +120,7 @@ public class AnchorEmbed extends ListenerAdapter {
                     }
                     Main.mapBigImageLinkEmbed.put(channelId, args[1]);
                     addDBBigImage(channelId, args[1]);
-                    event.getMessage().reply(event.getMember().getAsMention() + " success! Big image set for `?stickembed` stickies.").queue();
+                    event.getMessage().reply(event.getMember().getAsMention() + " success! Big image set for `?stickembed` pins.").queue();
                 } else {
                     event.getMessage().reply(event.getMember().getAsMention() + " please provide an image URL.\nExample: `?setbigimage <image-url>`.").queue();
                 }
@@ -138,12 +138,12 @@ public class AnchorEmbed extends ListenerAdapter {
             if (false) {
                 EmbedBuilder em = new EmbedBuilder();
                 em.setTitle("**Whoops! This is an AnchorBot Command!** ")
-                        .addField("__AnchorBot__ allows for sticky embeds plus other features.", "This command is available to all servers.", false);
+                        .addField("__AnchorBot__ allows for pin embeds plus other features.", "This command is available to all servers.", false);
                 event.getMessage().replyEmbeds(em.setColor(Color.ORANGE).build()).queue();
             } else {
                 removeDBBigImage(channelId);
                 Main.mapBigImageLinkEmbed.remove(channelId);
-                event.getMessage().reply(event.getMember().getAsMention() + " success! Big image removed for sticky embeds in this channel.").queue();
+                event.getMessage().reply(event.getMember().getAsMention() + " success! Big image removed for pin embeds in this channel.").queue();
             }
 
         } else if (args[0].equalsIgnoreCase(prefix + "removebigimage") && (!permCheck(event.getMember()))) {
@@ -157,13 +157,13 @@ public class AnchorEmbed extends ListenerAdapter {
 
             if (Main.mapImageLinkEmbed.containsKey(channelId)) {
                 EmbedBuilder em = new EmbedBuilder();
-                em.setTitle("Current big image for sticky embeds in this channel:");
+                em.setTitle("Current big image for pin embeds in this channel:");
                 em.setThumbnail(Main.mapBigImageLinkEmbed.get(channelId));
                 em.setDescription("Link: " + Main.mapBigImageLinkEmbed.get(channelId));
                 event.getMessage().replyEmbeds(em.setColor(Color.ORANGE).build()).queue();
 
             } else {
-                event.getMessage().reply(event.getMember().getAsMention() + " there is no image currently set for sticky embeds in this channel.\nSet one with the `" + prefix + "setimage` command.").queue();
+                event.getMessage().reply(event.getMember().getAsMention() + " there is no image currently set for pin embeds in this channel.\nSet one with the `" + prefix + "setimage` command.").queue();
             }
 
         }
@@ -176,7 +176,7 @@ public class AnchorEmbed extends ListenerAdapter {
             if (false) {
                 EmbedBuilder em = new EmbedBuilder();
                 em.setTitle("**Whoops! This is an AnchorBot Command!** ")
-                        .addField("__AnchorBot__ allows for sticky embeds plus other features.", "This command is available to all servers.", false);
+                        .addField("__AnchorBot__ allows for pin embeds plus other features.", "This command is available to all servers.", false);
                 event.getMessage().replyEmbeds(em.setColor(Color.ORANGE).build()).queue();
             }
             else  {
@@ -220,7 +220,7 @@ public class AnchorEmbed extends ListenerAdapter {
                     }
 
                     emb.setColor(event.getGuild().getMemberById(Main.botId).getColor());
-                    event.getChannel().sendMessage(emb.build()).queue(m -> Main.mapDeleteIdEmbed.put(event.getChannel().getId(), m.getId()));
+                    SilentMessages.send(event.getChannel(), emb.build()).queue(m -> Main.mapDeleteIdEmbed.put(event.getChannel().getId(), m.getId()));
                     event.getMessage().addReaction("\u2705").queue();
                 } catch (Exception e) {
                     event.getMessage().reply(event.getMember().getAsMention() + " please use this format: `" + prefix + "stickembed <message>`\n*Only include emotes that are from this server.*").queue();
@@ -267,7 +267,7 @@ public class AnchorEmbed extends ListenerAdapter {
                             if (Main.mapBigImageLinkEmbed.containsKey(channelId)) {
                                 emb.setImage(Main.mapBigImageLinkEmbed.get(channelId));
                             }
-                            event.getChannel().sendMessage(emb.build()).queue(mes -> Main.mapDeleteIdEmbed.put(channelId, mes.getId()));
+                            SilentMessages.send(event.getChannel(), emb.build()).queue(mes -> Main.mapDeleteIdEmbed.put(channelId, mes.getId()));
 
                             //Added to make sure it does not bug and send two stickies (next 5 lines)
                             event.getChannel().getHistory().retrievePast(10).queue(messageListDelete -> {
@@ -316,7 +316,7 @@ public class AnchorEmbed extends ListenerAdapter {
                     emb.setColor(event.getGuild().getMemberById(Main.botId).getColor());
 
                     try {
-                        event.getChannel().sendMessage(emb.build()).queue(null, (error) -> {
+                        SilentMessages.send(event.getChannel(), emb.build()).queue(null, (error) -> {
 
                             Main.mapMessageEmbed.remove(channelId);
                             Main.mapDeleteId.remove(channelId);

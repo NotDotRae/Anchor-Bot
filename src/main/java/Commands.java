@@ -60,7 +60,7 @@ public class Commands extends ListenerAdapter {
                 eb.addField("Uptime:", "``" + numberOfHours + " Hours, " + numberOfMinutes + " Min, " + numberOfSeconds + " Seconds``", true);
                 eb.addField("Shards: ", "Shard " + "**" + ((event.getGuild().getIdLong() >>> 22) % Main.jda.getShardsTotal()) + " of " + (Main.jda.getShardsTotal()) + "**", false);
                 eb.addField("Guilds:", "AnchorBot is in **" + NumberFormat.getInstance().format(Main.jda.getGuildCache().size()) + "** Guilds", false);
-                eb.addField("Included Features: ", "All sticky and embed features are free to use.", false);
+                eb.addField("Included Features: ", "All pin and embed features are free to use.", false);
                 eb.addField("**Commands:** ", "Do ``?commands`` or ``?help``", false);
                 eb.setFooter("AnchorBot is Made with Java & JDA", Main.jda.getShards().get(0).getSelfUser().getAvatarUrl());
 
@@ -282,11 +282,11 @@ public class Commands extends ListenerAdapter {
                 EmbedBuilder embed = new EmbedBuilder();
                 embed.setColor(Color.ORANGE);
                 embed.setTitle("-AnchorBot-");
-                embed.addField("Features:", "-Unlimited stickied messages." +
-                        "\n-Use Custom Embeds as stickies." +
-                        "\n-Create slower posting stickies." +
+                embed.addField("Features:", "-Unlimited pinned messages." +
+                        "\n-Use Custom Embeds as pins." +
+                        "\n-Create slower posting pins." +
                         "\n-Custom Prefix." +
-                        "\n-Removes \"Stickied Message:\" header." +
+                        "\n-Removes \"Pinned Message:\" header." +
                         "\n-All features are free to use." +
                         "\n-More to come!", false);
                 event.getMessage().replyEmbeds(embed.build()).queue();

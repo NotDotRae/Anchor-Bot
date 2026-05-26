@@ -32,7 +32,7 @@ public class SlowAnchor extends ListenerAdapter {
             if (false) {
                 EmbedBuilder em = new EmbedBuilder();
                 em.setTitle("**Whoops! This is an AnchorBot Command!** ")
-                        .addField("__AnchorBot__ allows for slow stickies plus other features.", "This command is available to all servers.", false);
+                        .addField("__AnchorBot__ allows for slow pins plus other features.", "This command is available to all servers.", false);
                 event.getMessage().reply(em.setColor(Color.ORANGE).build()).queue();
             } else {
                 try {
@@ -73,7 +73,7 @@ public class SlowAnchor extends ListenerAdapter {
                         removeDB(channelId);
                         addDB(channelId,(arr[1]));
 
-                    event.getChannel().sendMessage(Main.mapMessageSlow.get(channelId)).queue(m -> Main.mapDeleteId2.put(event.getChannel().getId(), m.getId()));
+                    SilentMessages.send(event.getChannel(), Main.mapMessageSlow.get(channelId)).queue(m -> Main.mapDeleteId2.put(event.getChannel().getId(), m.getId()));
                     event.getMessage().addReaction("\u2705").queue();
                 } catch (Exception e) {
                     event.getMessage().reply(event.getMember().getAsMention() + " please use this format: `" + prefix + "stickslow <message>`.").queue();
@@ -112,7 +112,7 @@ public class SlowAnchor extends ListenerAdapter {
                             //if message is older then 35 sec
                             if(m.getTimeCreated().compareTo(OffsetDateTime.now().minusSeconds(35)) < 0) {
                                 m.delete().queue(null, (error) -> {});
-                                event.getChannel().sendMessage(Main.mapMessageSlow.get(channelId)).queue(mes -> Main.mapDeleteId2.put(channelId, mes.getId()));
+                                SilentMessages.send(event.getChannel(), Main.mapMessageSlow.get(channelId)).queue(mes -> Main.mapDeleteId2.put(channelId, mes.getId()));
                             }
                             break;
                         }
@@ -141,7 +141,7 @@ public class SlowAnchor extends ListenerAdapter {
 
                     //If message send fails, stickstop
                     if (event.getChannel().canTalk()) {
-                        event.getChannel().sendMessage(Main.mapMessageSlow.get(channelId)).queue();
+                        SilentMessages.send(event.getChannel(), Main.mapMessageSlow.get(channelId)).queue(mes -> Main.mapDeleteId2.put(channelId, mes.getId()));
                     } else {
                         Main.mapMessageSlow.remove(channelId);
                         removeDB(channelId);

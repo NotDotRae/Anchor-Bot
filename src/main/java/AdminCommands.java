@@ -38,7 +38,7 @@ public class AdminCommands extends ListenerAdapter {
                                     "`?getshard <server ID>` - Get the shard number a server is on."
                             , false)
                     .addField("Dev Only Commands:",
-                            "`?manualstop <channel ID>` - StickStop a sticky in the specified channel.\n" +
+                            "`?manualstop <channel ID>` - Stop a pin in the specified channel.\n" +
                                     "`?restart` - Restart all shards (The whole bot).\n" +
                                     "`?shutdown` - Shutdown AnchorBot.\n" +
                                     "`?adminstats` - Get VPS stats.", false);
@@ -87,7 +87,7 @@ public class AdminCommands extends ListenerAdapter {
 
                 } else {
                     System.out.println("no active sticky in that channel or other error.");
-                    event.getChannel().sendMessage("no active sticky in that channel or other error").queue();
+                    event.getChannel().sendMessage("no active pin in that channel or other error").queue();
                 }
 
 

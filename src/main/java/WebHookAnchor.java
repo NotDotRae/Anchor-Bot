@@ -126,7 +126,7 @@ public class WebHookAnchor extends ListenerAdapter {
                 embed.setImageUrl(Main.mapBigImageLinkEmbed.get(event.getChannel().getId()));
             }
 
-            client.send(embed.build());
+            client.send(SilentMessages.webhook(embed.build()));
             client.close();
 
             event.getMessage().addReaction("\u2705").queue();
@@ -199,7 +199,7 @@ public class WebHookAnchor extends ListenerAdapter {
                                     embed.setImageUrl(Main.mapBigImageLinkEmbed.get(channelId));
                                 }
 
-                                client.send(embed.build());
+                                client.send(SilentMessages.webhook(embed.build()));
                                 client.close();
                             }
                             break;
@@ -239,7 +239,7 @@ public class WebHookAnchor extends ListenerAdapter {
                             embed.setImageUrl(Main.mapBigImageLinkEmbed.get(channelId));
                         }
 
-                        client.send(embed.build());
+                        client.send(SilentMessages.webhook(embed.build()));
                         client.close();
                     }
 

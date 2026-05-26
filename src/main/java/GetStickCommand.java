@@ -33,39 +33,39 @@ public class GetStickCommand extends ListenerAdapter {
             }
 
             if (getClassicStickyChannels(guildID).isEmpty() && getSlowAnchorChannels(guildID).isEmpty() && getEmbedStickyChannels(guildID).isEmpty() && getWebhookStickyChannels(guildID).isEmpty()) {
-                event.getMessage().reply("No active stickies in this server!\nYou can make one with `" + prefix + "stick` or use `" + prefix + "help` for a full list of commands.").queue();
+                event.getMessage().reply("No active pins in this server!\nYou can make one with `" + prefix + "stick` or use `" + prefix + "help` for a full list of commands.").queue();
                 return;
             }
 
             Member stickyBot = event.getGuild().getMemberById(Main.botId);
             EmbedBuilder emb = new EmbedBuilder();
             emb.setColor(Color.ORANGE)
-                    .setTitle("-Active Stickies in **" + event.getGuild().getName() + "**-")
+                    .setTitle("-Active Pins in **" + event.getGuild().getName() + "**-")
                     .setFooter("AnchorBot", Main.jda.getShards().get(0).getSelfUser().getAvatarUrl());
 
 
             if (!getClassicStickyChannels(guildID).isEmpty()) {
                 //Add classic stickies to embed
                 for (String channelID : getClassicStickyChannels(guildID)) {
-                    emb.addField("Classic Sticky:", "Channel: " + event.getGuild().getGuildChannelById(channelID).getAsMention() + "\n__Stickied Message:__```\n" + Main.mapMessage.get(channelID) + "```", false);
+                    emb.addField("Classic Pin:", "Channel: " + event.getGuild().getGuildChannelById(channelID).getAsMention() + "\n__Pinned Message:__```\n" + Main.mapMessage.get(channelID) + "```", false);
                 }
             }
             if (!getSlowAnchorChannels(guildID).isEmpty()) {
                 //Add Sticky Slow to embed
                 for (String channelID : getSlowAnchorChannels(guildID)) {
-                    emb.addField("Slow Sticky:", "Channel: " + event.getGuild().getGuildChannelById(channelID).getAsMention() + "\n__Stickied Message:__```\n" + Main.mapMessageSlow.get(channelID) + "```", false);
+                    emb.addField("Slow Pin:", "Channel: " + event.getGuild().getGuildChannelById(channelID).getAsMention() + "\n__Pinned Message:__```\n" + Main.mapMessageSlow.get(channelID) + "```", false);
                 }
             }
             if (!getEmbedStickyChannels(guildID).isEmpty()) {
-                //Add Sticky Embeds to embed
+                //Add pin embeds to embed
                 for (String channelID : getEmbedStickyChannels(guildID)) {
-                    emb.addField("Sticky Embed:", "Channel: " + event.getGuild().getGuildChannelById(channelID).getAsMention() + "__\nStickied Message:__```\n" + Main.mapMessageEmbed.get(channelID) + "```", false);
+                    emb.addField("Pin Embed:", "Channel: " + event.getGuild().getGuildChannelById(channelID).getAsMention() + "__\nPinned Message:__```\n" + Main.mapMessageEmbed.get(channelID) + "```", false);
                 }
             }
             if (!getWebhookStickyChannels(guildID).isEmpty()) {
-                //Add Sticky WebHook to embed
+                //Add pin WebHook to embed
                 for (String channelID : getEmbedStickyChannels(guildID)) {
-                    emb.addField("WebHook Sticky Embed:", "Channel: " + event.getGuild().getGuildChannelById(channelID).getAsMention() + "__\nStickied Message:__```\n" + Main.webhookMessage.get(channelID) + "```", false);
+                    emb.addField("WebHook Pin Embed:", "Channel: " + event.getGuild().getGuildChannelById(channelID).getAsMention() + "__\nPinned Message:__```\n" + Main.webhookMessage.get(channelID) + "```", false);
                 }
             }
 

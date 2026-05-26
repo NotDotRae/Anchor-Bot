@@ -39,15 +39,15 @@ public class JoinNewGuild extends ListenerAdapter {
                 eb.setColor(Color.yellow);
                 eb.setTitle("**Thank You For Adding AnchorBot To Your Server!**");
                 eb.setDescription("Here are the basics to get you started:");
-                eb.addField("Note:", "The stickied message is sent every 5 messages or 15 seconds to comply with discord TOS.", false);
+                eb.addField("Note:", "The pinned message is sent every 5 messages or 15 seconds to comply with discord TOS.", false);
                 eb.addField("**Commands:** ", "Do ``?commands`` or ``?help``", false);
-                eb.addField("Issues?", "Make sure the bot has permission to send messages, delete messages, and bypass slow mode in sticky channels.", false);
-                eb.addField("Included Features: ", "-Unlimited Stickied Messages."  +
-                        "\n-Use Custom Embeds as Stickies." +
-                        "\n-Create a sticky embed with a custom name and profile pic." +
+                eb.addField("Issues?", "Make sure the bot has permission to send messages, delete messages, and bypass slow mode in pin channels.", false);
+                eb.addField("Included Features: ", "-Unlimited Pinned Messages."  +
+                        "\n-Use Custom Embeds as Pins." +
+                        "\n-Create a pin embed with a custom name and profile pic." +
                         "\n-Custom Prefix." +
-                        "\n-Removes \"Stickied Message:\" header." +
-                        "\n-Slower Posting Stickies." +
+                        "\n-Removes \"Pinned Message:\" header." +
+                        "\n-Slower Posting Pins." +
                         "\n-All features are free to use." +
                         "\n-More to come!", false);
                 eb.setFooter("AnchorBot", Main.jda.getShards().get(0).getSelfUser().getAvatarUrl());
