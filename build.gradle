@@ -1,20 +1,23 @@
 plugins {
-    id'java'
-    id'application'
-    id'com.github.johnrengelman.shadow' version '5.2.0'
+    id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
-mainClassName = 'Main'
+application {
+    mainClass = 'Main'
+}
 
 version '1.0'
 
 sourceCompatibility = 11
+targetCompatibility = 11
 
 
 
 repositories {
-    jcenter()
     mavenCentral()
+    maven { url 'https://jcenter.bintray.com/' }
     maven { url 'https://jitpack.io' }
     maven {
         name 'm2-dv8tion'
@@ -23,16 +26,13 @@ repositories {
 }
 
 dependencies {
-    compile 'net.dv8tion:JDA:4.3.0_309'
-    compile 'com.jagrosh:jda-utilities:3.0.2'
-    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.19'
+    implementation 'net.dv8tion:JDA:4.3.0_309'
     implementation 'com.github.DiscordBotList:DBL-Java-Library:2.0.1'
-    implementation 'org.openweathermap.java-api:api-core:1.2.3'
-    implementation 'com.github.KSoft-Si:KSoft4J:development-SNAPSHOT'
-    implementation 'org.fastily:jwiki:1.8.0'
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'com.konghq:unirest-java:3.4.00'
-    compile 'commons-io:commons-io:2.8.0'
+    implementation 'club.minnced:discord-webhooks:0.8.4'
+    implementation 'commons-io:commons-io:2.15.1'
+    implementation 'org.apache.commons:commons-lang3:3.14.0'
     implementation 'com.googlecode.json-simple:json-simple:1.1.1'
 }
 

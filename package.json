@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "convex:dev": "convex dev",
+    "convex:deploy": "convex deploy",
+    "convex:codegen": "convex codegen",
+    "convex:typecheck": "convex typecheck"
+  },
+  "dependencies": {
+    "convex": "1.39.1"
+  },
+  "devDependencies": {
+    "typescript": "5.8.3"
+  }
+}
