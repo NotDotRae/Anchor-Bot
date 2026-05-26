@@ -88,6 +88,9 @@ public class Main {
                 .build();
 
         jda.setActivity(playing("?help"));
+        if (!jda.getShards().isEmpty()) {
+            jda.getShards().get(0).upsertCommand("help", "Show AnchorBot commands.").queue();
+        }
 
         if (!topggAPIToken.isBlank() && !botId.equals("YOUR_BOT_ID")) {
             topggAPI = new DiscordBotListAPI.Builder()

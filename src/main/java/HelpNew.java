@@ -1,6 +1,7 @@
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Emoji;
 import net.dv8tion.jda.api.events.interaction.ButtonClickEvent;
+import net.dv8tion.jda.api.events.interaction.SlashCommandEvent;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.components.ActionRow;
@@ -25,6 +26,21 @@ public class HelpNew extends ListenerAdapter {
             } catch (Exception e) {
                 event.getMessage().reply("I need the `Embed Links` permission.").queue();
             }
+        }
+    }
+
+    public void onSlashCommand(SlashCommandEvent event) {
+        if (!event.getName().equals("help")) {
+            return;
+        }
+
+        String prefix = event.getGuild() == null ? "?" : currentPrefix(event.getGuild().getId());
+        try {
+            event.replyEmbeds(stickyHelp(prefix).build())
+                    .addActionRows(navButtons("sticky"))
+                    .queue(null, error -> event.reply("I need the `Embed Links` permission.").setEphemeral(true).queue());
+        } catch (Exception e) {
+            event.reply("I need the `Embed Links` permission.").setEphemeral(true).queue();
         }
     }
 
